@@ -20,11 +20,11 @@ class ImageSearch {
         if(!$searchParameters instanceof ImageSearchParameters)
             die('$searchParameters is not a instance of Bing\ImageSearchParameters');
 
-        $request = new \Http_Request2($this->settings['bing']['url']);
+        $request = new \Http_Request2($this->settings['url']);
 
         $url = $request->getUrl();
 
-        $request->setHeader(['Ocp-Apim-Subscription-Key' => $this->settings['bing']['key']]);
+        $request->setHeader(['Ocp-Apim-Subscription-Key' => $this->settings['key']]);
 
         $url->setQueryVariables($searchParameters->toArray());
 

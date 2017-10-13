@@ -33,7 +33,7 @@ class Biuc {
         } elseif($ret['url'] != "" && !$this->is_404($ret['url'])) {
             $ret_json = json_encode(['url' => $ret['url'], 'source' => 'cache']);
         } else { 
-            $json_response = (new Bing\ImageSearch)->search(new Bing\ImageSearchParameters(['q' => $query, 'count' => '10']));
+            $json_response = (new Bing\ImageSearch($this->settings['bing']))->search(new Bing\ImageSearchParameters(['q' => $query, 'count' => '10']));
             if($json_response && isset($json_response->value) && count($json_response->value) > 0) {
                 
                 $response_counter = 0;
