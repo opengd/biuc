@@ -3,24 +3,28 @@
 namespace Bing;
 
 require 'HTTP/Request2.php';
+require 'settings.php';
 
 use \HTTP\Request2;
 
 class ImageSearch {
 
-    private $azureUrl = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search';
-    private $key = 'YOUR_SERVICE_BING_KEY';
+    private $settings;
+
+    function __construct(array $settings) {
+        $this->settings = $settings;
+    }
 
     function search($searchParameters) 
     {
         if(!$searchParameters instanceof ImageSearchParameters)
             die('$searchParameters is not a instance of Bing\ImageSearchParameters');
 
-        $request = new \Http_Request2($this->azureUrl);
+        $request = new \Http_Request2($this->settings['bing']['url']);
 
         $url = $request->getUrl();
 
-        $request->setHeader(['Ocp-Apim-Subscription-Key' => $this->key]);
+        $request->setHeader(['Ocp-Apim-Subscription-Key' => $this->settings['bing']['key']]);
 
         $url->setQueryVariables($searchParameters->toArray());
 

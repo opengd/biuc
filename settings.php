@@ -22,4 +22,8 @@ $settings = [
     'admin' => 'ADMINPASSWORD',
     'user' => 'USERPASSWORD',
   ],
+  'bing' => [
+    'url' => 'https://api.cognitive.microsoft.com/bing/v5.0/images/search',
+    'key' => 'YOUR_SERVICE_BING_KEY',
+  ],
 ];
